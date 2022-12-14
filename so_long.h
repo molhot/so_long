@@ -43,6 +43,13 @@ typedef struct	s_game
 	int		**map;
 }	t_game;
 
+typedef struct	s_map
+{
+	int width;
+	int height;
+	char **map_str;
+}	t_map;
+
 char	*ft_strchr(const char (*s), int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char (*string_row));
