@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: satushi <sakata19991214@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 20:02:14 by satushi           #+#    #+#             */
-/*   Updated: 2022/12/14 20:02:14 by satushi          ###   ########.fr       */
+/*   Created: 2022/12/15 14:09:52 by satushi           #+#    #+#             */
+/*   Updated: 2022/12/15 14:09:52 by satushi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-char	*ft_strchr(const char (*s), int c)
+void	ft_bzero(void *str, size_t n)
 {
-	size_t	num;
+	char	*str_remake;
 
-	if (s == NULL)
-		return (NULL);
-	num = 0;
-	while (s[num] != '\0')
+	str_remake = (char *)str;
+	while (n != 0)
 	{
-		if ((unsigned char)s[num] == (unsigned char)c)
-			return ((char *)s + num);
-		num = num + 1;
+		*str_remake = '\0';
+		str_remake = str_remake + 1;
+		n = n - 1;
 	}
-	return (NULL);
 }

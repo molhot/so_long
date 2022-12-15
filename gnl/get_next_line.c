@@ -12,16 +12,6 @@
 
 #include "../so_long.h"
 
-size_t	ft_strlen(const char (*string_row))
-{
-	size_t	stringlen;
-
-	stringlen = 0;
-	while (string_row[stringlen] != '\0')
-		stringlen++;
-	return (stringlen);
-}
-
 char	*ft_save_gnl(int fd, char *save)
 {
 	char	*buff;

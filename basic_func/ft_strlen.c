@@ -12,12 +12,12 @@
 
 #include "../so_long.h"
 
-size_t ft_strlen(char *subject)
+size_t ft_strlen(const char *subject)
 {
 	size_t length;
 
 	length = 0;
 	while (subject[length] != '\0')
 		length++;
-	return (length)
+	return (length);
 }

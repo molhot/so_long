@@ -35,20 +35,20 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
-typedef struct	s_game
-{
-	void	*mlx;
-	void	*win;
-	t_img	img;
-	int		**map;
-}	t_game;
-
 typedef struct	s_map
 {
 	int width;
 	int height;
 	char **map_str;
 }	t_map;
+
+typedef struct	s_game
+{
+	void	*mlx;
+	void	*win;
+	t_img	*img;
+	t_map	*map;
+}	t_game;
 
 char	*ft_strchr(const char (*s), int c);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -59,7 +59,9 @@ char	*get_next_line(int fd_num);
 char	*ft_save_gnl(int fd, char *save);
 char	*ft_prepareline(char *save);
 char	*ft_preparenextline(char *save_in_n);
-size_t	ft_strlcat(char *dst, char *src, size_t final_dst_size);
+size_t	ft_strlcat(char *dst, const char *src, size_t final_dst_size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t cpysize);
+char	*get_next_line(int fd_num);
+void	ft_bzero(void *str, size_t n);
 
 #endif
