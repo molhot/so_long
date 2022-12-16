@@ -56,7 +56,7 @@ int main(void)
 
 	void *mlx;
 	void *imimg;
-	char *relative_path = "./MiConv.com__ducsfund.xpm";
+	char *relative_path = "../item_image/kusa.xpm";
 	int imimg_width = 500;
 	int imimg_height = 500;
 
@@ -67,14 +67,6 @@ int main(void)
 	img.img = mlx_new_image(vars.mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	imimg = mlx_xpm_file_to_image(vars.mlx, relative_path, &imimg_width, &imimg_height);
-	// while(i <= 600)
-	// {
-	// 	my_mlx_pixel_put(&img, i, j, 0x00FF0000);
-	// 	i++;
-	// 	my_mlx_pixel_put(&img, i, j, 0x00FF0000);
-	// 	j = j + 2;
-	// }
-	//mlx_loop_hook(vars.mlx, render_nextframe, &img);
 	mlx_put_image_to_window(vars.mlx, vars.win, imimg, 0 , 0);
 	mlx_put_image_to_window(vars.mlx, vars.win, imimg, 100 , 100);
 	mlx_put_image_to_window(vars.mlx, vars.win, imimg, 200 , 200);
