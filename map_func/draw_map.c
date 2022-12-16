@@ -18,21 +18,23 @@ void put_image(t_game gameinfo, char *filepath, int x, int y)
 	int		img_h;
 
 	img_w = 50;
-	img_h = 50
+	img_h = 50;
 	gameinfo.img = mlx_xpm_file_to_image(gameinfo.mlx, "../item_image/MiConv.com__ducsfund.xpm", &img_w, &img_h);
-	mlx_put_image_to_window(gameinfo.mlx, gameinfo.win, gameinfo.img, x, y)
+	mlx_put_image_to_window(gameinfo.mlx, gameinfo.win, gameinfo.img, x, y);
 }
 
 void switch_draw_image(char sub, t_game gameinfo, int x, int y)
 {
 	if (sub == '0')
-		put_image()
+		put_image(gameinfo, "../item_image/kusa.xpm", x, y);
 	else if (sub == '1')
-		printf("1");
+		put_image(gameinfo, "../item_image/ajisai.xpm", x, y);
 	else if (sub == 'P')
-		printf("P");
+		put_image(gameinfo, "../item_image/dog.xpm", x, y);
+	else if (sub == 'C')
+		put_image(gameinfo, "../item_image/key.xpm", x, y);
 	else if (sub == 'E')
-		printf("E");
+		put_image(gameinfo, "../item_image/nankin.xpm", x, y);
 }
 
 void draw_map(t_game gameinfo)
@@ -42,7 +44,7 @@ void draw_map(t_game gameinfo)
 	int		row;
 	int		number;
 
-	height = gameinfo.map->height;
+	map_height = gameinfo.map->height;
 	row = 0;
 	number = 0;
 	while (row != map_height)
