@@ -21,18 +21,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdint.h>
+# include "minilibx-linux/mlx.h"
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 100
 #endif
-
-// typedef struct	s_img
-// {
-// 	void	*img;
-// 	int		*data;
-// 	int		bpp;
-// 	int		endian;
-// }	t_img;
 
 typedef struct	s_map
 {
@@ -45,6 +38,7 @@ typedef struct	s_game
 {
 	void	*mlx;
 	void	*win;
+	void	*img;
 	void	*img_wall;
 	void	*img_key;
 	void	*img_goal_hide_item;
@@ -66,6 +60,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t final_dst_size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t cpysize);
 char	*get_next_line(int fd_num);
 void	ft_bzero(void *str, size_t n);
-void	draw_map(t_game gameinfo)
+void	draw_map(t_game gameinfo);
+void	init_imgwall(t_game gameinfo, char *filepath);
+void	init_imgtile(t_game gameinfo, char *filepath);
+void	init_imgplayer(t_game gameinfo, char *filepath);
+void	init_imgcollectitem(t_game gameinfo, char *filepath);
+void	init_imggoal(t_game gameinfo, char *filepath);
+t_map	*read_map(char *map);
 
 #endif

@@ -52,7 +52,7 @@ void draw_map(t_game gameinfo)
 		map_line = gameinfo.map->map_str[row];
 		while (map_line[number] != '\0')
 		{
-			switch_draw_image(map_line[number], 50 * number, 50 * row);
+			switch_draw_image(map_line[number], gameinfo, 32 * number, 32 * row);
 			number++;
 		}
 		row++;

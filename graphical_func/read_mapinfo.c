@@ -20,16 +20,20 @@ static t_map *obtain_map_info(char *map, t_map *mapinfo)
 	int		fd;
 
 	fd = open(map, O_RDONLY);
+	line = get_next_line(fd);
 	line = ft_strdup("");
 	height = 0;
 	while (line != NULL)
 	{
+		free(line);
 		line = get_next_line(fd);
 		if (height == 0)
 			width = ft_strlen(line);
+		if (line == NULL)
+			break ;
 		height++;
-		free(line);
 	}
+	printf("%s\n", "tes//////1");
 	mapinfo->height = height;
 	mapinfo->width = width;
 	return (mapinfo);
@@ -43,8 +47,10 @@ t_map *read_map(char *map)
 	char	*line;
 
 	map_info = (t_map *)malloc(sizeof(t_map) * 1);
+	printf("%s\n", "tes------------0");
 	map_info = obtain_map_info(map, map_info);
 	map_info->map_str = (char **)malloc(sizeof(char *) * (map_info->height + 1));
+	printf("%s\n", "tes------------1");
 	i = 0;
 	fd = open(map, O_RDONLY);
 	line = ft_strdup("");
@@ -54,6 +60,7 @@ t_map *read_map(char *map)
 		(map_info->map_str)[i] = ft_strdup(line);
 		i++;
 	}
+	printf("%s\n", "tes------------2");
 	return (map_info);
 }
 

@@ -1,7 +1,11 @@
 NAME = so_long
 LIBMLX = minilibx-linux/libmlx_Linux.a
 
-SRCS = test.c
+SRCS = gnl/get_next_line.c\
+		basic_func/ft_bzero.c basic_func/ft_strchr.c basic_func/ft_strdup.c basic_func/ft_strjoin.c\
+		basic_func/ft_strlcat.c basic_func/ft_strlcpy.c basic_func/ft_strlen.c\
+		graphical_func/draw_map.c graphical_func/img_init.c graphical_func/read_mapinfo.c\
+		so_long_main.c
 
 OBJS = $(SRCS:.c=.o)
 
