@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-void put_image(t_game gameinfo, char *filepath, int x, int y)
+static void put_image(t_game gameinfo, char *filepath, int x, int y)
 {
 	int		img_w;
 	int		img_h;
@@ -23,7 +23,7 @@ void put_image(t_game gameinfo, char *filepath, int x, int y)
 	mlx_put_image_to_window(gameinfo.mlx, gameinfo.win, gameinfo.img, x, y);
 }
 
-void switch_draw_image(char sub, t_game gameinfo, int x, int y)
+static void switch_draw_image(char sub, t_game gameinfo, int x, int y)
 {
 	if (sub == '0')
 		put_image(gameinfo, "../item_image/kusa.xpm", x, y);

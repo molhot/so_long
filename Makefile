@@ -1,6 +1,7 @@
-NAME = libftprintf.a
+NAME = so_long
+LIBMLX = minilibx-linux/libmlx_Linux.a
 
-SRCS = ft_printf.c ft_putnbr_string.c ft_putstr.c
+SRCS = test.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -10,14 +11,18 @@ CFLAGS = -Wall -Wextra -Werror -I includes
 
 all: $(NAME)
 
-$(NAME):$(OBJS)
-	ar -rc $(NAME) $(OBJS)
+${NAME}: ${SRCS} ${LIBMLX}
+	${CC} ${SRCS} ${LIBMLX} -lX11 -lXext -o ${NAME}
+
+${LIBMLX}:
+	make -C minilibx-linux/
 
 clean:
-	rm -f $(OBJS)
+	rm -rf ${OBJS}
 
 fclean: clean
-	rm -f all
+	rm -rf ${NAME}
+	make clean -C mlx/
 
 re: fclean all
 
