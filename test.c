@@ -70,10 +70,12 @@ int close(unsigned long long code, t_vars *vars)
 	return (0);
 }
 
-int exposer(t_vars *vars)
+void input_text(t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
+	int width;
+	int height;
+
+	(*vars).img_wall = mlx_xpm_file_to_image((*vars).mlx,"item_image/grass.xpm" , &width, &height);
 }
 
 int main(void)
@@ -105,8 +107,9 @@ int main(void)
 	int map_b_h = 0;
 
 	vars.mlx = mlx_init();
+	printf("%s\n", "here is not stoped");
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "HEY WHAT THE PURODUCTION!");
-	mlx_hook(vars.win, 17, 1L<<0, close, &vars);
+	//mlx_hook((*vars).win, 17, 1L<<0, close, vars);
 	//img.img = mlx_new_image(vars.mlx, 1920, 1080);
 	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	// imimg = mlx_xpm_file_to_image(vars.mlx, relative_path, &imimg_width, &imimg_height);
@@ -119,21 +122,28 @@ int main(void)
 	// int j = 0;
 	int width;
 	int height;
-	wallimg = mlx_xpm_file_to_image(vars.mlx,"item_image/grass.xpm" , &width, &height);
-	//tile = mlx_xpm_file_to_image(vars.mlx,"item_image/grass.xpm" , &imimg_width, &imimg_height);
-	vars.img_wall = wallimg;
+	//wallimg = mlx_xpm_file_to_image(vars.mlx,"item_image/grass.xpm" , &width, &height);
+	//vars.img_wall = mlx_xpm_file_to_image(vars.mlx,"item_image/grass.xpm" , &width, &height);
+	printf("%s\n", "here is not stoped");
+	input_text(&vars);
+	tile = mlx_xpm_file_to_image(vars.mlx,"item_image/wall.xpm" , &imimg_width, &imimg_height);
+	printf("%s\n", "here is not stoped");
+	//vars.img_wall = wallimg;
 	vars.img_tile = tile;
 	while (map_b_h != 10)
 	{
 		while (map_b_w != 10)
 		{
 			printf("%d %d > height width\n", map_b_h, map_b_w);
-			if (map[map_b_h][map_b_w] == 0 || map[map_b_h][map_b_w] == 1)
+			if (map[map_b_h][map_b_w] == 0)
 				mlx_put_image_to_window(vars.mlx, vars.win, vars.img_wall, width * map_b_w, height * map_b_h);
+			if (map[map_b_h][map_b_w] == 1)
+				mlx_put_image_to_window(vars.mlx, vars.win, vars.img_tile, width * map_b_w, height * map_b_h);
 			map_b_w = map_b_w + 1;
 		}
 		map_b_w = 0;
 		map_b_h = map_b_h + 1;
 	}
+	printf("%s\n", "here is not stoped");
 	mlx_loop(vars.mlx);
 }

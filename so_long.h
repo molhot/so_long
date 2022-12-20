@@ -38,10 +38,9 @@ typedef struct	s_game
 {
 	void	*mlx;
 	void	*win;
-	void	*img;
 	void	*img_wall;
 	void	*img_key;
-	void	*img_goal_hide_item;
+	void	*img_player;
 	void	*img_goal;
 	void	*img_tile;
 	t_map	*map;
@@ -61,11 +60,11 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t cpysize);
 char	*get_next_line(int fd_num);
 void	ft_bzero(void *str, size_t n);
 void	draw_map(t_game gameinfo);
-void	init_imgwall(t_game gameinfo, char *filepath);
-void	init_imgtile(t_game gameinfo, char *filepath);
-void	init_imgplayer(t_game gameinfo, char *filepath);
-void	init_imgcollectitem(t_game gameinfo, char *filepath);
-void	init_imggoal(t_game gameinfo, char *filepath);
+void	init_imgwall(t_game **gameinfo);
+void	init_imgtile(t_game **gameinfo);
+void	init_imgplayer(t_game **gameinfo);
+void	init_imgcollectitem(t_game **gameinfo);
+void	init_imggoal(t_game **gameinfo);
 t_map	*read_map(char *map);
 
 #endif

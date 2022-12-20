@@ -47,10 +47,8 @@ t_map *read_map(char *map)
 	char	*line;
 
 	map_info = (t_map *)malloc(sizeof(t_map) * 1);
-	printf("%s\n", "tes------------0");
 	map_info = obtain_map_info(map, map_info);
 	map_info->map_str = (char **)malloc(sizeof(char *) * (map_info->height + 1));
-	printf("%s\n", "tes------------1");
 	i = 0;
 	fd = open(map, O_RDONLY);
 	line = ft_strdup("");
@@ -60,7 +58,6 @@ t_map *read_map(char *map)
 		(map_info->map_str)[i] = ft_strdup(line);
 		i++;
 	}
-	printf("%s\n", "tes------------2");
 	return (map_info);
 }
 

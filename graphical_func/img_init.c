@@ -12,42 +12,42 @@
 
 # include "../so_long.h"
 
-void init_imgwall(t_game gameinfo, char *filepath)
+void init_imgwall(t_game **gameinfo)
 {
 	int	width;
 	int	height;
 
-	gameinfo.img_wall = mlx_xpm_file_to_image(gameinfo.mlx,"item_image/wall.xpm" , &width, &height);
+	(**gameinfo).img_wall = mlx_xpm_file_to_image((**gameinfo).mlx, "item_image/wall.xpm" , &width, &height);
 }
 
-void init_imgtile(t_game gameinfo, char *filepath)
+void init_imgtile(t_game **gameinfo)
 {
 	int	width;
 	int	height;
 
-	gameinfo.img_tile = mlx_xpm_file_to_image(gameinfo.mlx,"item_image/grass.xpm" , &width, &height);
+	(**gameinfo).img_tile = mlx_xpm_file_to_image((**gameinfo).mlx, "item_image/grass.xpm" , &width, &height);
 }
 
-void init_imgplayer(t_game gameinfo, char *filepath)
+void init_imgplayer(t_game **gameinfo)
 {
 	int	width;
 	int	height;
 
-	gameinfo.img_tile = mlx_xpm_file_to_image(gameinfo.mlx,"item_image/tenshi.xpm" , &width, &height);
+	(**gameinfo).img_player = mlx_xpm_file_to_image((**gameinfo).mlx, "item_image/tenshi.xpm" , &width, &height);
 }
 
-void init_imgcollectitem(t_game gameinfo, char *filepath)
+void init_imgcollectitem(t_game **gameinfo)
 {
 	int	width;
 	int	height;
 
-	gameinfo.img_tile = mlx_xpm_file_to_image(gameinfo.mlx,"item_image/crystal.xpm" , &width, &height);
+	(**gameinfo).img_key = mlx_xpm_file_to_image((**gameinfo).mlx, "item_image/crystal.xpm" , &width, &height);
 }
 
-void init_imggoal(t_game gameinfo, char *filepath)
+void init_imggoal(t_game **gameinfo)
 {
 	int	width;
 	int	height;
 
-	gameinfo.img_tile = mlx_xpm_file_to_image(gameinfo.mlx,"item_image/toride.xpm" , &width, &height);
+	(**gameinfo).img_goal = mlx_xpm_file_to_image((**gameinfo).mlx, "item_image/toride.xpm" , &width, &height);
 }
