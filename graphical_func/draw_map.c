@@ -37,14 +37,14 @@ void draw_map(t_game gameinfo)
 	int		number;
 
 	map_height = gameinfo.map->height;
+	printf("map height is ->>> %ld\n", map_height);
 	row = 0;
 	number = 0;
-	while (row != map_height - 1)
+	while (row != map_height)
 	{
 		map_line = gameinfo.map->map_str[row];
 		while (map_line[number] != '\n')
 		{
-			printf("%c\n", map_line[number]);
 			switch_draw_image(map_line[number], gameinfo, 32 * number, 32 * row);
 			number++;
 		}

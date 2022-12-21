@@ -43,6 +43,8 @@ typedef struct	s_game
 	void	*img_player;
 	void	*img_goal;
 	void	*img_tile;
+	int		player_x;
+	int		player_y;
 	t_map	*map;
 }	t_game;
 
@@ -66,5 +68,6 @@ void	init_imgplayer(t_game **gameinfo);
 void	init_imgcollectitem(t_game **gameinfo);
 void	init_imggoal(t_game **gameinfo);
 t_map	*read_map(char *map);
+void	to_right();
 
 #endif

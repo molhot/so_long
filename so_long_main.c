@@ -18,11 +18,6 @@ void img_info_init(t_game *gameinfo)
 	int	height;
 	t_game **subaddress;
 
-	// (*gameinfo).img_wall = mlx_xpm_file_to_image((*gameinfo).mlx, "item_image/wall.xpm" , &width, &height);
-	// (*gameinfo).img_tile = mlx_xpm_file_to_image((*gameinfo).mlx, "item_image/grass.xpm" , &width, &height);
-	// (*gameinfo).img_player = mlx_xpm_file_to_image((*gameinfo).mlx, "item_image/tenshi.xpm" , &width, &height);
-	// (*gameinfo).img_key = mlx_xpm_file_to_image((*gameinfo).mlx, "item_image/crystal.xpm" , &width, &height);
-	// (*gameinfo).img_goal = mlx_xpm_file_to_image((*gameinfo).mlx, "item_image/toride.xpm" , &width, &height);
 	subaddress = &gameinfo;
 	init_imgtile(subaddress);
 	init_imgplayer(subaddress);
@@ -31,41 +26,81 @@ void img_info_init(t_game *gameinfo)
 	init_imgwall(subaddress);
 }
 
+int	key_press(int keycode, t_game *param)
+{
+	printf("pushed keycode is %d\n", keycode);
+	if (keycode == 65363 || keycode == 100)
+	{
+		printf("pushed keycode is right\n");
+		to_right(&(param->player_x), &(param->player_y), param);
+	}
+	if (keycode == 65362 || keycode == 122)
+	{
+		printf("pushed keycode is up\n");
+	}
+	if (keycode == 65361 || keycode == 113)
+	{
+		printf("pushed keycode is left\n");
+	}
+	if (keycode == 65364 || keycode == 115)
+	{
+		printf("pushed keycode is down\n");
+	}
+}
+
+void obtain_Psinfo(int *x, int *y, t_map *map)
+{
+	int width_c;
+	int height_c;
+
+	width_c = 0;
+	height_c = 0;
+	while (height_c != map->height)
+	{
+		while (width_c != map->width)
+		{
+			if ((*map).map_str[height_c][width_c] == 'P')
+			{
+				*x = width_c;
+				*y = height_c;
+				return ;
+			}
+			width_c++;
+		}
+		height_c++;
+		width_c = 0;
+	}
+}
+
 int main()
 {
 	t_game	game_all_info;
-	int		width;
-	int		height;
 
 	game_all_info.map = read_map("map_image/map_image.ber");
 	//testmapにmap情報が格納される
-	printf("%s\n", "test3");
+
+	obtain_Psinfo(&(game_all_info.player_x), &(game_all_info.player_y), game_all_info.map);
+	//Playerの位置を獲得
 
 	game_all_info.mlx = mlx_init();
 	//描画の初期化
-	printf("%s\n", "test3");
 
 	game_all_info.win = mlx_new_window(game_all_info.mlx, 1920, 1080, "gamingwindow");
 	//windowの初期化
-	printf("%s\n", "test3");
+
+	mlx_hook(game_all_info.win, 2, 1L<<0, key_press, &game_all_info);
+	//右とか上の紐づけ
 
 	img_info_init(&game_all_info);
-	printf("%s\n", (char*)game_all_info.img_goal);
 	//各種イメージデータの初期化
-	// game_all_info.img_wall = mlx_xpm_file_to_image(game_all_info.mlx, "item_image/wall.xpm" , &width, &height);
-	// game_all_info.img_tile = mlx_xpm_file_to_image(game_all_info.mlx, "item_image/grass.xpm" , &width, &height);
-	// game_all_info.img_player = mlx_xpm_file_to_image(game_all_info.mlx, "item_image/tenshi.xpm" , &width, &height);
-	// game_all_info.img_key = mlx_xpm_file_to_image(game_all_info.mlx, "item_image/crystal.xpm" , &width, &height);
-	//game_all_info.img_goal = mlx_xpm_file_to_image(game_all_info.mlx, "item_image/toride.xpm" , &width, &height);
-	printf("%s\n", "test3");
-
-
-	printf("%s\n", "test3");
-	//mlx_put_image_to_window(game_all_info.mlx, game_all_info.win, game_all_info.img_goal, 32, 32);
 
 	draw_map(game_all_info);
 	//mapデータの書き込み
-	//printf("%s\n", "test4");
+
+	//-----------------------------------------//
+	//ここまで挙動確認済み//
+	//ここから未確認//
+
 
 	mlx_loop(game_all_info.mlx);
 }

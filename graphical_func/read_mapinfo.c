@@ -6,11 +6,22 @@
 /*   By: satushi <sakata19991214@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:23:09 by satushi           #+#    #+#             */
-/*   Updated: 2022/12/14 23:23:09 by satushi          ###   ########.fr       */
+/*   Updated: 2022/12/22 00:02:16 by satushi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+static int	gnl_line(char *line)
+{
+	int	line_w;
+
+	line_w = 0;
+	while (line[line_w] == '1')
+		line_w++;
+	line_w--;
+	return line_w;
+}
 
 static t_map *obtain_map_info(char *map, t_map *mapinfo)
 {
@@ -21,21 +32,17 @@ static t_map *obtain_map_info(char *map, t_map *mapinfo)
 
 	fd = open(map, O_RDONLY);
 	line = get_next_line(fd);
-	line = ft_strdup("");
 	height = 0;
 	while (line != NULL)
 	{
-		free(line);
-		line = get_next_line(fd);
 		if (height == 0)
-			width = ft_strlen(line);
-		if (line == NULL)
-			break ;
+			width = gnl_line(line);
+		line = get_next_line(fd);
 		height++;
 	}
-	printf("%s\n", "tes//////1");
 	mapinfo->height = height;
 	mapinfo->width = width;
+	printf("mapinfo's width is %d\n", mapinfo->width);
 	return (mapinfo);
 }
 
@@ -52,12 +59,15 @@ t_map *read_map(char *map)
 	i = 0;
 	fd = open(map, O_RDONLY);
 	line = ft_strdup("");
-	while (i != map_info->height - 1)
+	while (i != map_info->height)
 	{
 		line = get_next_line(fd);
 		(map_info->map_str)[i] = ft_strdup(line);
 		i++;
 	}
+	(map_info->map_str[i]) = NULL;
+	printf("first mapinfo's height is %d\n", map_info->height);
+	printf("first mapinfo's width is %d\n", map_info->width);
 	return (map_info);
 }
 
