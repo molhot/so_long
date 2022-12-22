@@ -37,14 +37,17 @@ int	key_press(int keycode, t_game *param)
 	if (keycode == 65362 || keycode == 122)
 	{
 		printf("pushed keycode is up\n");
+		to_up(&(param->player_x), &(param->player_y), param);
 	}
 	if (keycode == 65361 || keycode == 113)
 	{
 		printf("pushed keycode is left\n");
+		to_left(&(param->player_x), &(param->player_y), param);
 	}
 	if (keycode == 65364 || keycode == 115)
 	{
 		printf("pushed keycode is down\n");
+		to_down(&(param->player_x), &(param->player_y), param);
 	}
 }
 

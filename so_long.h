@@ -68,6 +68,9 @@ void	init_imgplayer(t_game **gameinfo);
 void	init_imgcollectitem(t_game **gameinfo);
 void	init_imggoal(t_game **gameinfo);
 t_map	*read_map(char *map);
-void	to_right();
+void	to_right(int *x, int *y, t_game *param);
+void	to_up(int *x, int *y, t_game *param);
+void	to_left(int *x, int *y, t_game *param);
+void	to_down(int *x, int *y, t_game *param);
 
 #endif
