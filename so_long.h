@@ -45,6 +45,7 @@ typedef struct	s_game
 	void	*img_tile;
 	int		player_x;
 	int		player_y;
+	int		collectitem_num;
 	t_map	*map;
 }	t_game;
 
@@ -68,9 +69,15 @@ void	init_imgplayer(t_game **gameinfo);
 void	init_imgcollectitem(t_game **gameinfo);
 void	init_imggoal(t_game **gameinfo);
 t_map	*read_map(char *map);
-void	to_right(int *x, int *y, t_game *param);
-void	to_up(int *x, int *y, t_game *param);
-void	to_left(int *x, int *y, t_game *param);
-void	to_down(int *x, int *y, t_game *param);
+void	to_right(int *x, int *y, int *counter, t_game *param);
+void	to_up(int *x, int *y, int *counter, t_game *param);
+void	to_left(int *x, int *y, int *counter, t_game *param);
+void	to_down(int *x, int *y, int *counter, t_game *param);
+int		obtain_correctitem(char **map);
+bool	map_rowcheck(char **mapinfo);
+size_t	ft_strlen_withn(const char (*string_row));
+bool	mandatory_mapcheck(char **map);
+bool    map_basiccheck(char **mapinfo);
+bool    fill_check(char **mapinfo, int position);
 
 #endif
