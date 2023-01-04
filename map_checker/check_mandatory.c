@@ -6,46 +6,90 @@
 /*   By: satushi <sakata19991214@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 20:51:22 by satushi           #+#    #+#             */
-/*   Updated: 2023/01/03 20:51:22 by satushi          ###   ########.fr       */
+/*   Updated: 2023/01/04 09:16:24 by satushi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../so_long.h"
+#include "../so_long.h"
 
-static void char_increment(char **map, size_t high, size_t row, size_t *P, size_t *E, size_t *C)
+static	size_t	p_counter(char **map)
 {
-    while (map[high] != NULL)
-    {
-        while (map[high][row] != '\0')
-        {
-          if (map[high][row] == 'P')
-                *P = *P + 1;
-            else if (map[high][row] == 'E')
-                *E = *E + 1;
-            else if (map[high][row] == 'C')
-                *C = *C + 1;
-            row++;
-        }
-        row = 0;
-        high++;
-    }
+	size_t	p_counter;
+	size_t	map_high;
+	size_t	map_row;
+
+	map_high = 0;
+	map_row = 0;
+	p_counter = 0;
+	while (map[map_high] != NULL)
+	{
+		while (map[map_high][map_row] != '\0')
+		{
+			if (map[map_high][map_row] == 'P')
+				p_counter++;
+			map_row++;
+		}
+		map_row = 0;
+		map_high++;
+	}
+	return (p_counter);
 }
 
-bool mandatory_mapcheck(char **map)
+static	size_t	e_counter(char **map)
 {
-    size_t  p;
-    size_t  e;
-    size_t  c;
-    int      map_highposition;
-    size_t  rowposition;
+	size_t	e_counter;
+	size_t	map_high;
+	size_t	map_row;
 
-    p = 0;
-    e = 0;
-    c = 0;
-    map_highposition = 0;
-    rowposition = 0; 
-    char_increment(map, map_highposition, rowposition, &p, &e, &c);
-    if (p == 1 && e > 0 && c > 0)
-        return (true);
-    return (false);
-} 
+	map_high = 0;
+	map_row = 0;
+	e_counter = 0;
+	while (map[map_high] != NULL)
+	{
+		while (map[map_high][map_row] != '\0')
+		{
+			if (map[map_high][map_row] == 'E')
+				e_counter++;
+			map_row++;
+		}
+		map_row = 0;
+		map_high++;
+	}
+	return (e_counter);
+}
+
+static	size_t	c_counter(char **map)
+{
+	size_t	c_counter;
+	size_t	map_high;
+	size_t	map_row;
+
+	map_high = 0;
+	map_row = 0;
+	c_counter = 0;
+	while (map[map_high] != NULL)
+	{
+		while (map[map_high][map_row] != '\0')
+		{
+			if (map[map_high][map_row] == 'c')
+				c_counter++;
+			map_row++;
+		}
+		map_row = 0;
+		map_high++;
+	}
+	return (c_counter);
+}
+
+bool	mandatory_mapcheck(char **map)
+{
+	size_t	p;
+	size_t	e;
+	size_t	c;
+	int		map_highposition;
+	size_t	rowposition;
+
+	if (p_counter(map) == 1 && e_counter(map) > 0 && c_counter(map) > 0)
+		return (true);
+	return (false);
+}

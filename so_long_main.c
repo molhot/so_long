@@ -12,11 +12,11 @@
 
 #include "so_long.h"
 
-void img_info_init(t_game *gameinfo)
+void	img_info_init(t_game *gameinfo)
 {
-	int	width;
-	int	height;
-	t_game **subaddress;
+	int		width;
+	int		height;
+	t_game	**subaddress;
 
 	subaddress = &gameinfo;
 	init_imgtile(subaddress);
@@ -32,29 +32,33 @@ int	key_press(int keycode, t_game *param)
 	if (keycode == 65363 || keycode == 100)
 	{
 		printf("pushed keycode is right\n");
-		to_right(&(param->player_x), &(param->player_y), &(param->collectitem_num), param);
+		to_right(&(param->player_x), &(param->player_y), \
+		&(param->collectitem_num), param);
 	}
 	if (keycode == 65362 || keycode == 122)
 	{
 		printf("pushed keycode is up\n");
-		to_up(&(param->player_x), &(param->player_y), &(param->collectitem_num), param);
+		to_up(&(param->player_x), &(param->player_y), \
+		&(param->collectitem_num), param);
 	}
 	if (keycode == 65361 || keycode == 113)
 	{
 		printf("pushed keycode is left\n");
-		to_left(&(param->player_x), &(param->player_y), &(param->collectitem_num), param);
+		to_left(&(param->player_x), &(param->player_y), \
+		&(param->collectitem_num), param);
 	}
 	if (keycode == 65364 || keycode == 115)
 	{
 		printf("pushed keycode is down\n");
-		to_down(&(param->player_x), &(param->player_y), &(param->collectitem_num), param);
+		to_down(&(param->player_x), &(param->player_y), \
+		&(param->collectitem_num), param);
 	}
 }
 
-void obtain_Psinfo(int *x, int *y, t_map *map)
+void	obtain_psinfo(int *x, int *y, t_map *map)
 {
-	int width_c;
-	int height_c;
+	int	width_c;
+	int	height_c;
 
 	width_c = 0;
 	height_c = 0;
@@ -75,37 +79,21 @@ void obtain_Psinfo(int *x, int *y, t_map *map)
 	}
 }
 
-int main()
+int	main(void)
 {
 	t_game	game_all_info;
 
 	game_all_info.map = read_map("map_image/map_image.ber");
-	//testmapにmap情報が格納される
-	game_all_info.collectitem_num = obtain_correctitem(game_all_info.map->map_str);
+	game_all_info.collectitem_num = \
+	obtain_correctitem(game_all_info.map->map_str);
 	printf("collectib item num is %d\n", game_all_info.collectitem_num);
-
-	obtain_Psinfo(&(game_all_info.player_x), &(game_all_info.player_y), game_all_info.map);
-	//Playerの位置を獲得
-
+	obtain_psinfo(&(game_all_info.player_x), \
+	&(game_all_info.player_y), game_all_info.map);
 	game_all_info.mlx = mlx_init();
-	//描画の初期化
-
-	game_all_info.win = mlx_new_window(game_all_info.mlx, 1920, 1080, "gamingwindow");
-	//windowの初期化
-
-	mlx_hook(game_all_info.win, 2, 1L<<0, key_press, &game_all_info);
-	//右とか上の紐づけ
-
+	game_all_info.win = mlx_new_window(game_all_info.mlx, \
+	1920, 1080, "gamingwindow");
+	mlx_hook(game_all_info.win, 2, 1L << 0, key_press, &game_all_info);
 	img_info_init(&game_all_info);
-	//各種イメージデータの初期化
-
 	draw_map(game_all_info);
-	//mapデータの書き込み
-
-	//-----------------------------------------//
-	//ここまで挙動確認済み//
-	//ここから未確認//
-
-
 	mlx_loop(game_all_info.mlx);
 }

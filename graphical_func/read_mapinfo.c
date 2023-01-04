@@ -6,7 +6,7 @@
 /*   By: satushi <sakata19991214@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:23:09 by satushi           #+#    #+#             */
-/*   Updated: 2022/12/22 19:33:50 by satushi          ###   ########.fr       */
+/*   Updated: 2023/01/03 23:50:14 by satushi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static int	gnl_line(char *line)
 	while (line[line_w] == '1')
 		line_w++;
 	line_w--;
-	return line_w;
+	return (line_w);
 }
 
-static t_map *obtain_map_info(char *map, t_map *mapinfo)
+static t_map	*obtain_map_info(char *map, t_map *mapinfo)
 {
 	char	*line;
 	int		height;
@@ -46,7 +46,7 @@ static t_map *obtain_map_info(char *map, t_map *mapinfo)
 	return (mapinfo);
 }
 
-t_map *read_map(char *map)
+t_map	*read_map(char *map)
 {
 	t_map	*map_info;
 	size_t	i;
@@ -55,7 +55,8 @@ t_map *read_map(char *map)
 
 	map_info = (t_map *)malloc(sizeof(t_map) * 1);
 	map_info = obtain_map_info(map, map_info);
-	map_info->map_str = (char **)malloc(sizeof(char *) * (map_info->height + 1));
+	map_info->map_str = (char **)malloc(sizeof(char *) \
+	* (map_info->height + 1));
 	i = 0;
 	fd = open(map, O_RDONLY);
 	line = ft_strdup("");

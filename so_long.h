@@ -21,20 +21,21 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdint.h>
+# include <stdbool.h>
 # include "minilibx-linux/mlx.h"
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 100
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
-typedef struct	s_map
+typedef struct s_map
 {
-	int width;
-	int height;
-	char **map_str;
+	int		width;
+	int		height;
+	char	**map_str;
 }	t_map;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
@@ -77,7 +78,7 @@ int		obtain_correctitem(char **map);
 bool	map_rowcheck(char **mapinfo);
 size_t	ft_strlen_withn(const char (*string_row));
 bool	mandatory_mapcheck(char **map);
-bool    map_basiccheck(char **mapinfo);
-bool    fill_check(char **mapinfo, int position);
+bool	map_basiccheck(char	**mapinfo);
+bool	fill_check(char	**mapinfo, int position);
 
 #endif

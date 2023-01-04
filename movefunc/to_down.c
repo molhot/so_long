@@ -12,7 +12,7 @@
 
 #include "../so_long.h"
 
-void to_down(int *x, int *y, int *c_num, t_game *param)
+void	to_down(int *x, int *y, int *c_num, t_game *param)
 {
 	if ((param->map->map_str)[*y + 1][*x] != '1')
 	{
@@ -34,7 +34,9 @@ void to_down(int *x, int *y, int *c_num, t_game *param)
 		*y = *y + 1;
 		(param->map->map_str)[*y][*x] = '0';
 		printf("players x place is %d and y place is %d", *x, *y);
-		mlx_put_image_to_window(param->mlx, param->win, param->img_player, (*x) * 32, (*y) * 32);
-		mlx_put_image_to_window(param->mlx, param->win, param->img_tile, (*x) * 32, (*y) * 32 - 32);
+		mlx_put_image_to_window(param->mlx, param->win, param -> img_player, \
+		(*x) * 32, (*y) * 32);
+		mlx_put_image_to_window(param->mlx, param->win, \
+		param -> img_tile, (*x) * 32, (*y) * 32 - 32);
 	}
 }
