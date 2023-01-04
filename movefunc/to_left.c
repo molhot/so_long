@@ -32,7 +32,8 @@ void	to_left(int *x, int *y, int *c_num, t_game *param)
 			printf("collect num is %d\n", *c_num);
 		}
 		*x = *x - 1;
-		(param->map->map_str)[*y][*x] = '0';
+		(param->map->map_str)[*y][*x + 1] = '0';
+		(param->map->map_str)[*y][*x] = 'P';
 		printf("players x place is %d and y place is %d", *x, *y);
 		mlx_put_image_to_window(param->mlx, param->win, \
 		param->img_player, (*x) * 32, (*y) * 32);

@@ -46,6 +46,7 @@ void	draw_map(t_game gameinfo)
 	while (row != map_height)
 	{
 		map_line = gameinfo.map->map_str[row];
+		printf("%s", map_line);
 		while (map_line[number] != '\n')
 		{
 			switch_draw_image(map_line[number], \
