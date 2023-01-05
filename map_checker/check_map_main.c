@@ -72,14 +72,26 @@ bool	map_basiccheck(char **mapinfo)
 	while (mapinfo[map_position] != NULL)
 		map_position++;
 	if (map_rowcheck(mapinfo) != true)
+	{
+		ft_printf("here");
 		return (false);
+	}
 	if (mandatory_mapcheck(mapinfo) != true)
+	{
+		ft_printf("here2");
 		return (false);
+	}
 	map_row = ft_strlen_withn(mapinfo[0]);
 	map_high = map_position;
 	if (map_surroundcheck(mapinfo, map_high, map_row) != true)
+	{
+		ft_printf("here3");
 		return (false);
+	}
 	if (fill_check(mapinfo, map_high) != true)
+	{
+		ft_printf("here4");
 		return (false);
+	}
 	return (true);
 }

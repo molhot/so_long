@@ -23,6 +23,7 @@
 # include <stdint.h>
 # include <stdbool.h>
 # include "minilibx-linux/mlx.h"
+# include <stdarg.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
@@ -47,6 +48,7 @@ typedef struct s_game
 	int		player_x;
 	int		player_y;
 	int		collectitem_num;
+	int		moved_count;
 	t_map	*map;
 }	t_game;
 
@@ -81,5 +83,12 @@ bool	mandatory_mapcheck(char **map);
 bool	map_basiccheck(char	**mapinfo);
 bool	fill_check(char	**mapinfo, int position);
 char	*obtain_line_memory(char *subject, char *sub_line);
+int		ft_printf(const char *fmt_or_nch, ...);
+size_t	ft_putchar(char inputchar_num);
+size_t	ft_putchar_string(char *sub_string);
+size_t	inputnbr(long long subject, char *src);
+size_t	ft_putnum_to_hexia(long long num, char *basestring);
+size_t	ft_putaddr_to_hexia(unsigned long long num, char *basestring);
+int		exit_game(t_game *game_all_info);
 
 #endif

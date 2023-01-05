@@ -17,24 +17,19 @@ void	to_up(int *x, int *y, int *c_num, t_game *param)
 	if ((param->map->map_str)[*y - 1][*x] != '1')
 	{
 		if (*c_num == 0 && (param->map->map_str)[*y - 1][*x] == 'E')
-		{
-			printf("END");
-			return ;
-		}
+			exit_game(param);
 		else if (*c_num != 0 && (param->map->map_str)[*y - 1][*x] == 'E')
 		{
-			printf("NOT END !!!!!!!!\n\n\n");
+			ft_printf("You must collect item");
 			return ;
 		}
 		if ((param->map->map_str)[*y - 1][*x] == 'C' && *c_num != 0)
-		{
 			*c_num = *c_num - 1;
-			printf("collect num is %d\n", *c_num);
-		}
 		*y = *y - 1;
+		param->moved_count = param->moved_count + 1;
+		ft_printf("move count is %d\n", param->moved_count);
 		(param->map->map_str)[*y + 1][*x] = '0';
 		(param->map->map_str)[*y][*x] = 'P';
-		printf("players x place is %d and y place is %d", *x, *y);
 		mlx_put_image_to_window(param->mlx, param->win, \
 		param->img_player, (*x) * 32, (*y) * 32);
 		mlx_put_image_to_window(param->mlx, param->win, \

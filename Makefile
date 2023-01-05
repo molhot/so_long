@@ -6,7 +6,10 @@ SRCS = gnl/get_next_line.c\
 		basic_func/ft_strlcat.c basic_func/ft_strlcpy.c basic_func/ft_strlen.c basic_func/ft_strlen_withn.c\
 		graphical_func/draw_map.c graphical_func/img_init.c graphical_func/read_mapinfo.c\
 		movefunc/to_right.c movefunc/to_left.c movefunc/to_up.c movefunc/to_down.c\
-		count_collectitem.c so_long_main.c
+		count_collectitem.c so_long_main.c\
+		ft_printf/ft_printf.c ft_printf/ft_putnbr_string.c ft_printf/ft_putstr.c\
+		map_checker/check_mandatory.c map_checker/check_map_main.c\
+		map_checker/fill_check.c map_checker/map_rownum_check.c
 
 OBJS = $(SRCS:.c=.o)
 

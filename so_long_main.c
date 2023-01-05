@@ -28,7 +28,6 @@ void	img_info_init(t_game *gameinfo)
 
 int	key_press(int keycode, t_game *param)
 {
-	printf("pushed keycode is %d\n", keycode);
 	if (keycode == 65363 || keycode == 100)
 	{
 		printf("pushed keycode is right\n");
@@ -78,6 +77,23 @@ int	exit_game(t_game *game_all_info)
 	exit(0);
 }
 
+int	exit_game_error(t_game *game_all_info)
+{
+	int	i;
+
+	i = 0;
+	while (((*game_all_info).map->map_str)[i] != NULL)
+	{
+		free(((*game_all_info).map->map_str)[i]);
+		i++;
+	}
+	free(((*game_all_info).map->map_str)[i]);
+	free((*game_all_info).map->map_str);
+	perror("this map is not corrective");
+	free((*game_all_info).map);
+	exit(0);
+}
+
 void	obtain_psinfo(int *x, int *y, t_map *map)
 {
 	int	width_c;
@@ -107,10 +123,13 @@ int	main(void)
 	t_game	game_all_info;
 
 	game_all_info.map = read_map("map_image/map_image.ber");
+	if (false == map_basiccheck(game_all_info.map->map_str))
+		exit_game_error(&game_all_info);
 	game_all_info.collectitem_num = \
 	obtain_correctitem(game_all_info.map->map_str);
 	obtain_psinfo(&(game_all_info.player_x), \
 	&(game_all_info.player_y), game_all_info.map);
+	game_all_info.moved_count = 0;
 	game_all_info.mlx = mlx_init();
 	game_all_info.win = mlx_new_window(game_all_info.mlx, \
 	800, 600, "gamingwindow");
