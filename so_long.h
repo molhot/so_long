@@ -63,7 +63,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t final_dst_size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t cpysize);
 char	*get_next_line(int fd_num);
 void	ft_bzero(void *str, size_t n);
-void	draw_map(t_game gameinfo);
+t_game	draw_map(t_game gameinfo);
 void	init_imgwall(t_game **gameinfo);
 void	init_imgtile(t_game **gameinfo);
 void	init_imgplayer(t_game **gameinfo);
@@ -80,5 +80,6 @@ size_t	ft_strlen_withn(const char (*string_row));
 bool	mandatory_mapcheck(char **map);
 bool	map_basiccheck(char	**mapinfo);
 bool	fill_check(char	**mapinfo, int position);
+char	*obtain_line_memory(char *subject, char *sub_line);
 
 #endif

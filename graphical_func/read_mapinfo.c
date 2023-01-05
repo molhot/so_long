@@ -37,13 +37,31 @@ static t_map	*obtain_map_info(char *map, t_map *mapinfo)
 	{
 		if (height == 0)
 			width = gnl_line(line);
+		free(line);
 		line = get_next_line(fd);
 		height++;
 	}
 	mapinfo->height = height;
 	mapinfo->width = width;
-	printf("mapinfo's width is %d\n", mapinfo->width);
 	return (mapinfo);
+}
+
+char	*obtain_line_memory(char *subject, char *sub_line)
+{
+	size_t	line_length;
+	size_t	position;
+
+	line_length = ft_strlen_withn(sub_line);
+	position = 0;
+	subject = (char *)malloc(sizeof(char) * (line_length + 1));
+	position = 0;
+	while (position != line_length)
+	{
+		subject[position] = sub_line[position];
+		position++;
+	}
+	subject[position] = '\0';
+	return subject;
 }
 
 t_map	*read_map(char *map)
@@ -59,32 +77,14 @@ t_map	*read_map(char *map)
 	* (map_info->height + 1));
 	i = 0;
 	fd = open(map, O_RDONLY);
-	line = ft_strdup("");
 	while (i != map_info->height)
 	{
 		line = get_next_line(fd);
-		(map_info->map_str)[i] = ft_strdup(line);
+		map_info->map_str[i] = obtain_line_memory((map_info->map_str)[i], line);
+		free(line);
 		i++;
 	}
 	(map_info->map_str[i]) = NULL;
-	printf("first mapinfo's height is %d\n", map_info->height);
-	printf("first mapinfo's width is %d\n", map_info->width);
 	return (map_info);
 }
 
-/*
-int main()
-{
-	t_map *testmap;
-	int i;
-
-	testmap = read_map("../map_image/map_image.ber");
-	i = 0;
-	while (i != testmap->height - 1)
-	{
-		printf("%s", testmap->map_str[i]);
-		i++;
-	}
-	return (0);
-}
-*/

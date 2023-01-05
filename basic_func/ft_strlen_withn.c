@@ -16,8 +16,9 @@ size_t	ft_strlen_withn(const char (*string_row))
 {
 	size_t	stringlen;
 
-	stringlen = 0;
-	while (string_row[stringlen] != '\0' && string_row[stringlen] != '\n')
+	stringlen = 1;
+	while (string_row[stringlen] != '\0' && string_row[stringlen] != '\n' \
+	&& string_row[stringlen] != 13)
 		stringlen++;
 	return (stringlen);
 }

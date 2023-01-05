@@ -61,9 +61,20 @@ int	re_make(t_game *param)
 	draw_map(*param);
 }
 
-int	exit_game(t_game *game)
+int	exit_game(t_game *game_all_info)
 {
-	mlx_destroy_window(game->mlx, game->win);
+	int	i;
+
+	i = 0;
+	while (((*game_all_info).map->map_str)[i] != NULL)
+	{
+		free(((*game_all_info).map->map_str)[i]);
+		i++;
+	}
+	free(((*game_all_info).map->map_str)[i]);
+	free((*game_all_info).map->map_str);
+	free((*game_all_info).map);
+	mlx_destroy_window((*game_all_info).mlx, (*game_all_info).win);
 	exit(0);
 }
 
@@ -103,11 +114,10 @@ int	main(void)
 	game_all_info.mlx = mlx_init();
 	game_all_info.win = mlx_new_window(game_all_info.mlx, \
 	800, 600, "gamingwindow");
+	img_info_init(&game_all_info);
 	mlx_hook(game_all_info.win, 2, 1L << 0, key_press, &game_all_info);
 	mlx_hook(game_all_info.win, 33, 1L << 17, exit_game, &game_all_info);
 	mlx_hook(game_all_info.win, 9, 1L << 21, re_make, &game_all_info);
-	img_info_init(&game_all_info);
-	draw_map(game_all_info);
+	game_all_info = draw_map(game_all_info);
 	mlx_loop(game_all_info.mlx);
-	system("leaks so_long");
 }

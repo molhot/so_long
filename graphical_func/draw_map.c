@@ -33,27 +33,23 @@ static void	switch_draw_image(char sub, t_game gameinfo, int x, int y)
 		return ;
 }
 
-void	draw_map(t_game gameinfo)
+t_game	draw_map(t_game gameinfo)
 {
-	char	*map_line;
-	size_t	map_height;
 	int		row;
 	int		number;
 
-	map_height = gameinfo.map->height;
 	row = 0;
 	number = 0;
-	while (row != map_height)
+	while (row != gameinfo.map->height)
 	{
-		map_line = gameinfo.map->map_str[row];
-		printf("%s", map_line);
-		while (map_line[number] != '\n')
+		while (gameinfo.map->map_str[row][number] != '\0')
 		{
-			switch_draw_image(map_line[number], \
+			switch_draw_image(gameinfo.map->map_str[row][number], \
 			gameinfo, 32 * number, 32 * row);
 			number++;
 		}
 		row++;
 		number = 0;
 	}
+	return gameinfo;
 }
