@@ -56,7 +56,7 @@ int	exit_game_error(t_game *game_all_info)
 	}
 	free(((*game_all_info).map->map_str)[i]);
 	free((*game_all_info).map->map_str);
-	perror("this map is not corrective");
+	ft_printf("Error\nthis map is not corrective\n");
 	free((*game_all_info).map);
 	exit(0);
 }
