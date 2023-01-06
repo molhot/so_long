@@ -6,7 +6,7 @@
 /*   By: satushi <sakata19991214@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 20:13:40 by satushi           #+#    #+#             */
-/*   Updated: 2023/01/04 10:05:54 by satushi          ###   ########.fr       */
+/*   Updated: 2023/01/06 10:09:23 by satushi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,26 +72,14 @@ bool	map_basiccheck(char **mapinfo)
 	while (mapinfo[map_position] != NULL)
 		map_position++;
 	if (map_rowcheck(mapinfo) != true)
-	{
-		ft_printf("here");
 		return (false);
-	}
 	if (mandatory_mapcheck(mapinfo) != true)
-	{
-		ft_printf("here2");
 		return (false);
-	}
 	map_row = ft_strlen_withn(mapinfo[0]);
 	map_high = map_position;
 	if (map_surroundcheck(mapinfo, map_high, map_row) != true)
-	{
-		ft_printf("here3");
 		return (false);
-	}
 	if (fill_check(mapinfo, map_high) != true)
-	{
-		ft_printf("here4");
 		return (false);
-	}
 	return (true);
 }

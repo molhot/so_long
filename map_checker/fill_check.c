@@ -6,7 +6,7 @@
 /*   By: satushi <sakata19991214@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 21:16:18 by satushi           #+#    #+#             */
-/*   Updated: 2023/01/04 09:29:04 by satushi          ###   ########.fr       */
+/*   Updated: 2023/01/06 10:08:32 by satushi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ bool	fill_check(char **mapinfo, int position)
 	int		row;
 	int		high;
 	bool	judge;
-	int		i;
 
 	row = 0;
 	high = 0;
-	i = 0;
 	while (high != position)
 	{
 		while (mapinfo[high][row] != '\n' && mapinfo[high][row] != '\0')
@@ -62,11 +60,6 @@ bool	fill_check(char **mapinfo, int position)
 		}
 		row = 0;
 		high++;
-	}
-	while (mapinfo[i] != NULL)
-	{
-		printf("%s\n", mapinfo[i]);
-		i++;
 	}
 	judge = playable_or_not(mapinfo);
 	return (judge);

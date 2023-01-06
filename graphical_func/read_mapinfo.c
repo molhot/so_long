@@ -6,7 +6,7 @@
 /*   By: satushi <sakata19991214@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 23:23:09 by satushi           #+#    #+#             */
-/*   Updated: 2023/01/03 23:50:14 by satushi          ###   ########.fr       */
+/*   Updated: 2023/01/06 10:07:00 by satushi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*obtain_line_memory(char *subject, char *sub_line)
 		position++;
 	}
 	subject[position] = '\0';
-	return subject;
+	return (subject);
 }
 
 t_map	*read_map(char *map)
@@ -87,4 +87,3 @@ t_map	*read_map(char *map)
 	(map_info->map_str[i]) = NULL;
 	return (map_info);
 }
-

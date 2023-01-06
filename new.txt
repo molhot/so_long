@@ -1,8 +1,6 @@
 count_collectitem.c: OK!
-so_long_main.c: Error!
-Error: TOO_MANY_FUNCS       (line:  97, col:   1):	Too many functions in file
-Error: TOO_MANY_FUNCS       (line: 121, col:   1):	Too many functions in file
-Error: TOO_MANY_FUNCS       (line: 136, col:   1):	Too many functions in file
+so_long_main.c: OK!
+relative_free.c: OK!
 so_long.h: OK!
 movefunc/to_right.c: OK!
 movefunc/to_down.c: OK!
@@ -20,15 +18,10 @@ basic_func/ft_strlcpy.c: OK!
 basic_func/ft_strlen.c: OK!
 basic_func/ft_strlcat.c: OK!
 basic_func/ft_strjoin.c: OK!
-graphical_func/read_mapinfo.c: Error!
-Error: RETURN_PARENTHESIS   (line:  64, col:  12):	Return value must be in parenthesis
-Error: EMPTY_LINE_EOF       (line:  90, col:   1):	Empty line at end of file
+graphical_func/read_mapinfo.c: OK!
 graphical_func/img_init.c: OK!
-graphical_func/draw_map.c: Error!
-Error: RETURN_PARENTHESIS   (line:  54, col:  12):	Return value must be in parenthesis
+graphical_func/draw_map.c: OK!
 map_checker/check_mandatory.c: OK!
-map_checker/fill_check.c: Error!
-Error: TOO_MANY_LINES       (line:  73, col:   1):	Function has more than 25 lines
-map_checker/check_map_main.c: Error!
-Error: TOO_MANY_LINES       (line:  97, col:   1):	Function has more than 25 lines
+map_checker/fill_check.c: OK!
+map_checker/check_map_main.c: OK!
 map_checker/map_rownum_check.c: OK!

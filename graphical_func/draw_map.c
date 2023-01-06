@@ -51,5 +51,5 @@ t_game	draw_map(t_game gameinfo)
 		row++;
 		number = 0;
 	}
-	return gameinfo;
+	return (gameinfo);
 }
