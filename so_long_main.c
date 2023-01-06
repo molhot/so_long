@@ -118,6 +118,21 @@ void	obtain_psinfo(int *x, int *y, t_map *map)
 	}
 }
 
+void	free_map(t_game *game_all_info)
+{
+	int	i;
+
+	i = 0;
+	while ((game_all_info->map->map_str)[i] != NULL)
+	{
+		free((game_all_info->map->map_str)[i]);
+		i++;
+	}
+	free((game_all_info->map->map_str)[i]);
+	free(game_all_info->map->map_str);
+	free(game_all_info->map);
+}
+
 int	main(void)
 {
 	t_game	game_all_info;
@@ -125,6 +140,8 @@ int	main(void)
 	game_all_info.map = read_map("map_image/map_image.ber");
 	if (false == map_basiccheck(game_all_info.map->map_str))
 		exit_game_error(&game_all_info);
+	free_map(&game_all_info);
+	game_all_info.map = read_map("map_image/map_image.ber");
 	game_all_info.collectitem_num = \
 	obtain_correctitem(game_all_info.map->map_str);
 	obtain_psinfo(&(game_all_info.player_x), \
