@@ -71,10 +71,13 @@ bool	map_basiccheck(char **mapinfo)
 	position = 0;
 	while (mapinfo[map_position] != NULL)
 		map_position++;
+	printf("start\n");
 	if (map_rowcheck(mapinfo) != true)
 		return (false);
+	printf("check1\n");
 	if (mandatory_mapcheck(mapinfo) != true)
 		return (false);
+	printf("check2\n");
 	map_row = ft_strlen_withn(mapinfo[0]);
 	map_high = map_position;
 	if (map_surroundcheck(mapinfo, map_high, map_row) != true)

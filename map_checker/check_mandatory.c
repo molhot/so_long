@@ -89,9 +89,6 @@ bool	mandatory_mapcheck(char **map)
 	int		map_highposition;
 	size_t	rowposition;
 
-	ft_printf("p %d\n", p_counter(map));
-	ft_printf("e %d\n", e_counter(map));
-	ft_printf("c %d\n", c_counter(map));
 	if (p_counter(map) == 1 && e_counter(map) > 0 && c_counter(map) > 0)
 		return (true);
 	return (false);
