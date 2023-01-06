@@ -90,5 +90,7 @@ size_t	inputnbr(long long subject, char *src);
 size_t	ft_putnum_to_hexia(long long num, char *basestring);
 size_t	ft_putaddr_to_hexia(unsigned long long num, char *basestring);
 int		exit_game(t_game *game_all_info);
+void	free_map(t_game *game_all_info);
+int		exit_game(t_game *game_all_info);
 
 #endif

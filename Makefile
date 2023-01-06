@@ -9,7 +9,8 @@ SRCS = gnl/get_next_line.c\
 		count_collectitem.c so_long_main.c\
 		ft_printf/ft_printf.c ft_printf/ft_putnbr_string.c ft_printf/ft_putstr.c\
 		map_checker/check_mandatory.c map_checker/check_map_main.c\
-		map_checker/fill_check.c map_checker/map_rownum_check.c
+		map_checker/fill_check.c map_checker/map_rownum_check.c\
+		relative_free.c
 
 OBJS = $(SRCS:.c=.o)
 

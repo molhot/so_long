@@ -56,43 +56,25 @@ int	key_press(int keycode, t_game *param)
 
 int	re_make(t_game *param)
 {
-	printf("%s\n", "hey x is pushed");
 	draw_map(*param);
 }
 
-int	exit_game(t_game *game_all_info)
-{
-	int	i;
+// int	exit_game_error(t_game *game_all_info)
+// {
+// 	int	i;
 
-	i = 0;
-	while (((*game_all_info).map->map_str)[i] != NULL)
-	{
-		free(((*game_all_info).map->map_str)[i]);
-		i++;
-	}
-	free(((*game_all_info).map->map_str)[i]);
-	free((*game_all_info).map->map_str);
-	free((*game_all_info).map);
-	mlx_destroy_window((*game_all_info).mlx, (*game_all_info).win);
-	exit(0);
-}
-
-int	exit_game_error(t_game *game_all_info)
-{
-	int	i;
-
-	i = 0;
-	while (((*game_all_info).map->map_str)[i] != NULL)
-	{
-		free(((*game_all_info).map->map_str)[i]);
-		i++;
-	}
-	free(((*game_all_info).map->map_str)[i]);
-	free((*game_all_info).map->map_str);
-	perror("this map is not corrective");
-	free((*game_all_info).map);
-	exit(0);
-}
+// 	i = 0;
+// 	while (((*game_all_info).map->map_str)[i] != NULL)
+// 	{
+// 		free(((*game_all_info).map->map_str)[i]);
+// 		i++;
+// 	}
+// 	free(((*game_all_info).map->map_str)[i]);
+// 	free((*game_all_info).map->map_str);
+// 	perror("this map is not corrective");
+// 	free((*game_all_info).map);
+// 	exit(0);
+// }
 
 void	obtain_psinfo(int *x, int *y, t_map *map)
 {
@@ -118,20 +100,20 @@ void	obtain_psinfo(int *x, int *y, t_map *map)
 	}
 }
 
-void	free_map(t_game *game_all_info)
-{
-	int	i;
+// void	free_map(t_game *game_all_info)
+// {
+// 	int	i;
 
-	i = 0;
-	while ((game_all_info->map->map_str)[i] != NULL)
-	{
-		free((game_all_info->map->map_str)[i]);
-		i++;
-	}
-	free((game_all_info->map->map_str)[i]);
-	free(game_all_info->map->map_str);
-	free(game_all_info->map);
-}
+// 	i = 0;
+// 	while ((game_all_info->map->map_str)[i] != NULL)
+// 	{
+// 		free((game_all_info->map->map_str)[i]);
+// 		i++;
+// 	}
+// 	free((game_all_info->map->map_str)[i]);
+// 	free(game_all_info->map->map_str);
+// 	free(game_all_info->map);
+// }
 
 int	main(void)
 {
