@@ -28,15 +28,8 @@ bool	map_surround_check_helper1(char *line)
 
 bool	map_surround_check_helper2(char *line, size_t rowmax)
 {
-	size_t	position;
-
-	position = 0;
-	while (line[position] != '\0' && line[position] != '\n')
-	{
-		if ((position == 0 || position == rowmax) && line[position] != '1')
-			return (false);
-		position++;
-	}
+	if (line[0] != '1' || line[rowmax - 1] != '1')
+		return (false);
 	return (true);
 }
 
@@ -71,13 +64,10 @@ bool	map_basiccheck(char **mapinfo)
 	position = 0;
 	while (mapinfo[map_position] != NULL)
 		map_position++;
-	printf("start\n");
 	if (map_rowcheck(mapinfo) != true)
 		return (false);
-	printf("check1\n");
 	if (mandatory_mapcheck(mapinfo) != true)
 		return (false);
-	printf("check2\n");
 	map_row = ft_strlen_withn(mapinfo[0]);
 	map_high = map_position;
 	if (map_surroundcheck(mapinfo, map_high, map_row) != true)
