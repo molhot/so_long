@@ -24,6 +24,7 @@ void	img_info_init(t_game *gameinfo)
 	init_imgcollectitem(subaddress);
 	init_imggoal(subaddress);
 	init_imgwall(subaddress);
+	init_img_pontower(subaddress);
 }
 
 int	key_press(int keycode, t_game *param)
@@ -84,12 +85,14 @@ void	obtain_psinfo(int *x, int *y, t_map *map)
 int	main(void)
 {
 	t_game	game_all_info;
+	char	*map_info;
 
-	game_all_info.map = read_map("map_image/map_image_1.ber");
-	if (false == map_basiccheck(game_all_info.map->map_str))
+	map_info = "map_image/map_image_4.ber";
+	game_all_info.map = read_map(map_info);
+	if (game_all_info.map->map_str[0] == NULL || false == map_basiccheck(game_all_info.map->map_str))
 		exit_game_error(&game_all_info);
 	free_map(&game_all_info);
-	game_all_info.map = read_map("map_image/map_image_1.ber");
+	game_all_info.map = read_map(map_info);
 	game_all_info.collectitem_num = \
 	obtain_correctitem(game_all_info.map->map_str);
 	obtain_psinfo(&(game_all_info.player_x), \

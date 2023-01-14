@@ -29,6 +29,9 @@ static void	switch_draw_image(char sub, t_game gameinfo, int x, int y)
 	else if (sub == 'E')
 		mlx_put_image_to_window(gameinfo.mlx, \
 		gameinfo.win, gameinfo.img_goal, x, y);
+	else if (sub == 'L')
+		mlx_put_image_to_window(gameinfo.mlx, \
+		gameinfo.win, gameinfo.p_ongoal, x, y);
 	else
 		return ;
 }
