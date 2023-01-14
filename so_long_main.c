@@ -85,11 +85,11 @@ int	main(void)
 {
 	t_game	game_all_info;
 
-	game_all_info.map = read_map("map_image/map_image_4.ber");
+	game_all_info.map = read_map("map_image/map_image_1.ber");
 	if (false == map_basiccheck(game_all_info.map->map_str))
 		exit_game_error(&game_all_info);
 	free_map(&game_all_info);
-	game_all_info.map = read_map("map_image/map_image_4.ber");
+	game_all_info.map = read_map("map_image/map_image_1.ber");
 	game_all_info.collectitem_num = \
 	obtain_correctitem(game_all_info.map->map_str);
 	obtain_psinfo(&(game_all_info.player_x), \

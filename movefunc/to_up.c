@@ -20,7 +20,7 @@ void	to_up(int *x, int *y, int *c_num, t_game *param)
 			exit_game(param);
 		else if (*c_num != 0 && (param->map->map_str)[*y - 1][*x] == 'E')
 		{
-			ft_printf("You must collect item");
+			ft_printf("You must collect item\n");
 			return ;
 		}
 		if ((param->map->map_str)[*y - 1][*x] == 'C' && *c_num != 0)
