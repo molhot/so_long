@@ -69,6 +69,8 @@ bool	map_basiccheck(char **mapinfo)
 	if (mandatory_mapcheck(mapinfo) != true)
 		return (false);
 	map_row = ft_strlen_withn(mapinfo[0]);
+	if (map_container_check(mapinfo, map_row) != true)
+		return (false);
 	map_high = map_position;
 	if (map_surroundcheck(mapinfo, map_high, map_row) != true)
 		return (false);

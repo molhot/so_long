@@ -89,7 +89,7 @@ bool	mandatory_mapcheck(char **map)
 	int		map_highposition;
 	size_t	rowposition;
 
-	if (p_counter(map) == 1 && e_counter(map) > 0 && c_counter(map) > 0)
+	if (p_counter(map) == 1 && e_counter(map) == 1 && c_counter(map) > 0)
 		return (true);
 	return (false);
 }

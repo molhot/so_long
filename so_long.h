@@ -95,5 +95,7 @@ int		exit_game(t_game *game_all_info);
 void	free_map(t_game *game_all_info);
 int		exit_game(t_game *game_all_info);
 int		exit_game_error(t_game *game_all_info);
+bool	arg_check(int argc, char **args);
+bool	map_container_check(char **mapinfo, int max_row);
 
 #endif

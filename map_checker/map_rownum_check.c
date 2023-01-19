@@ -30,3 +30,28 @@ bool	map_rowcheck(char **mapinfo)
 	}
 	return (true);
 }
+
+bool	map_container_check(char **mapinfo, int max_row)
+{
+	size_t	high;
+	size_t	row;
+
+	high = 0;
+	row = 0;
+	while (mapinfo[high] != NULL)
+	{
+		while (row != max_row)
+		{
+			if (mapinfo[high][row] != 'C' \
+			&& mapinfo[high][row] != 'P' \
+			&& mapinfo[high][row] != 'E' \
+			&& mapinfo[high][row] != '1' \
+			&& mapinfo[high][row] != '0')
+				return (false);
+			row++;
+		}
+		high++;
+		row = 0;
+	}
+	return (true);
+}
