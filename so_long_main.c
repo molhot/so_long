@@ -101,7 +101,8 @@ int	main(int argc, char **argv)
 	game_all_info.moved_count = 0;
 	game_all_info.mlx = mlx_init();
 	game_all_info.win = mlx_new_window(game_all_info.mlx, \
-	game_all_info.map->width * 32, game_all_info.map->height * 32, "gamingwindow");
+	game_all_info.map->width * 32, \
+	game_all_info.map->height * 32, "gamingwindow");
 	img_info_init(&game_all_info);
 	mlx_hook(game_all_info.win, 2, 1L << 0, key_press, &game_all_info);
 	mlx_hook(game_all_info.win, 33, 1L << 17, exit_game, &game_all_info);
