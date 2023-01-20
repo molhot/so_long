@@ -19,7 +19,6 @@ static int	gnl_line(char *line)
 	line_w = 0;
 	while (line[line_w] == '1')
 		line_w++;
-	line_w--;
 	return (line_w);
 }
 
