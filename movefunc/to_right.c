@@ -12,12 +12,28 @@
 
 #include "../so_long.h"
 
+static	void	show_counter(t_game *param)
+{
+	char	*str;
+	int		wid;
+	int		hei;
+
+	wid = param->map->width * 32;
+	hei = (param->map->height - 1) * 32;
+	str = ft_itoa(param->moved_count);
+	mlx_put_image_to_window(param->mlx, param->win, \
+	param->white_img, wid, hei);
+	mlx_string_put(param->mlx, param->win, wid, hei + 32, 0x00FF0000, str);
+	free (str);
+}
+
 static	void	not_ended_inexit(int *x, int *y, int *c_num, t_game *param)
 {
 	ft_printf("You must collect item\n");
 	*x = *x + 1;
 	param->moved_count = param->moved_count + 1;
 	ft_printf("move count is %d\n", param->moved_count);
+	show_counter(param);
 	(param->map->map_str)[*y][*x - 1] = '0';
 	(param->map->map_str)[*y][*x] = 'L';
 	mlx_put_image_to_window(param->mlx, param->win, \
@@ -31,6 +47,7 @@ static	void	out_exit(int *x, int *y, int *c_num, t_game *param)
 	*x = *x + 1;
 	param->moved_count = param->moved_count + 1;
 	ft_printf("move count is %d\n", param->moved_count);
+	show_counter(param);
 	(param->map->map_str)[*y][*x - 1] = 'E';
 	(param->map->map_str)[*y][*x] = 'P';
 	mlx_put_image_to_window(param->mlx, param->win, \
@@ -54,6 +71,7 @@ void	to_right(int *x, int *y, int *c_num, t_game *param)
 		*x = *x + 1;
 		param->moved_count = param->moved_count + 1;
 		ft_printf("move count is %d\n", param->moved_count);
+		show_counter(param);
 		(param->map->map_str)[*y][*x - 1] = '0';
 		(param->map->map_str)[*y][*x] = 'P';
 		mlx_put_image_to_window(param->mlx, param->win, \

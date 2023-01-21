@@ -45,6 +45,7 @@ typedef struct s_game
 	void	*img_player;
 	void	*img_goal;
 	void	*img_tile;
+	void	*white_img;
 	void	*p_ongoal;
 	int		player_x;
 	int		player_y;
@@ -97,5 +98,7 @@ int		exit_game(t_game *game_all_info);
 int		exit_game_error(t_game *game_all_info);
 bool	arg_check(int argc, char **args);
 bool	map_container_check(char **mapinfo, int max_row);
+char	*ft_itoa(int n);
+void	init_img_white(t_game **gameinfo);
 
 #endif

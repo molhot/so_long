@@ -25,6 +25,7 @@ void	img_info_init(t_game *gameinfo)
 	init_imggoal(subaddress);
 	init_imgwall(subaddress);
 	init_img_pontower(subaddress);
+	init_img_white(subaddress);
 }
 
 int	key_press(int keycode, t_game *param)
@@ -101,7 +102,7 @@ int	main(int argc, char **argv)
 	game_all_info.moved_count = 0;
 	game_all_info.mlx = mlx_init();
 	game_all_info.win = mlx_new_window(game_all_info.mlx, \
-	game_all_info.map->width * 32, \
+	game_all_info.map->width * 32 + 32, \
 	game_all_info.map->height * 32, "gamingwindow");
 	img_info_init(&game_all_info);
 	mlx_hook(game_all_info.win, 2, 1L << 0, key_press, &game_all_info);
