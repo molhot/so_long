@@ -15,7 +15,7 @@ SRCS = gnl/get_next_line.c\
 
 OBJS = $(SRCS:.c=.o)
 
-CC = gcc -fsanitize=address -fno-omit-frame-pointer
+CC = cc -fsanitize=address -fno-omit-frame-pointer
 
 CFLAGS = -Wall -Wextra -Werror -I includes
 
